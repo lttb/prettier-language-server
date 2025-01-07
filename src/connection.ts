@@ -1,19 +1,29 @@
-import * as lsp from 'vscode-languageserver/node'
-import { URI } from 'vscode-uri'
-import * as prettier from 'prettier'
-import * as nodePath from 'node:path'
+import type {
+	Connection,
+	WorkspaceFolder,
+	InitializeResult,
+} from 'vscode-languageserver/node'
+import type { Options as PrettierOptions } from 'prettier'
 
-import { textDocuments } from './textDocuments.js'
+export async function createConnection(): Promise<Connection> {
+	const nodePath = await import('node:path')
+	const prettier = await import('prettier')
+	const { URI } = await import('vscode-uri')
+	const { TextDocument } = await import('vscode-languageserver-textdocument')
 
-export function createConnection(): lsp.Connection {
+	// cjs
+	const lsp = await import('vscode-languageserver/node.js')
+
+	const textDocuments = new lsp.TextDocuments(TextDocument)
+
 	const connection = lsp.createConnection(process.stdin, process.stdout)
 
 	textDocuments.listen(connection)
 
-	let folder: lsp.WorkspaceFolder | undefined
+	let folder: WorkspaceFolder | undefined
 
 	let workspacePrettierConfigFile: string | null
-	let workspacePrettierConfig: prettier.Options | null
+	let workspacePrettierConfig: PrettierOptions | null
 
 	async function setWorkspaceConfig(searchPath: string) {
 		workspacePrettierConfigFile ??= await prettier.resolveConfigFile(searchPath)
@@ -41,7 +51,7 @@ export function createConnection(): lsp.Connection {
 	async function prettierFormat(
 		uri: string,
 		code: string,
-		options?: prettier.Options,
+		options?: PrettierOptions,
 	) {
 		const filepath = URI.parse(uri).fsPath
 
@@ -66,7 +76,7 @@ export function createConnection(): lsp.Connection {
 			)
 		}
 
-		const result: lsp.InitializeResult = {
+		const result: InitializeResult = {
 			capabilities: {
 				textDocumentSync: lsp.TextDocumentSyncKind.Incremental,
 				documentFormattingProvider: true,

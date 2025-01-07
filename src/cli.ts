@@ -1,27 +1,29 @@
-import { parseArgs } from 'node:util'
+import { version } from '../package.json'
 
-import { createConnection } from './connection.js'
+async function main() {
+	const { parseArgs } = await import('node:util')
+	const { createConnection } = await import('./connection')
 
-const { values } = parseArgs({
-	options: {
-		version: {
-			type: 'boolean',
-			short: 'v',
+	const { values } = parseArgs({
+		options: {
+			version: {
+				type: 'boolean',
+				short: 'v',
+			},
 		},
-	},
-	strict: true,
-	allowPositionals: true,
-})
+		strict: true,
+		allowPositionals: true,
+	})
 
-if (values.version) {
-	const pkg = require('../package.json')
-	process.stdout.write(pkg.version)
+	if (values.version) {
+		process.stdout.write(version)
 
-	process.exit(0)
+		process.exit(0)
+	}
+
+	const conn = await createConnection()
+
+	conn.listen()
 }
 
-setTimeout(() => {
-	process.exit(0)
-}, 1000)
-
-createConnection().listen()
+main()

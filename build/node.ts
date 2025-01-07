@@ -1,11 +1,13 @@
+import * as path from 'node:path'
+
 await Bun.build({
-	entrypoints: ['./index.ts'],
+	entrypoints: [path.join(import.meta.dir, '../index.ts')],
 	target: 'node',
-	format: 'cjs',
 	minify: true,
-	//sourcemap: 'linked',
-	outdir: './bin/',
-	naming: 'pretterls.js',
+	format: 'cjs',
+	sourcemap: 'inline',
+	outdir: path.join(import.meta.dir, '../bin/'),
+	naming: 'pretterls',
 	external: [
 		'vscode-languageserver-textdocument',
 		'vscode-languageserver',

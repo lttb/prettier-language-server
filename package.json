@@ -1,10 +1,10 @@
 {
 	"name": "pretterls",
+	"type": "module",
 	"version": "0.0.1",
-	"bin": "./bin/pretterls.js",
+	"bin": "./bin/pretterls",
 	"scripts": {
-		"build:node": "bun build --target node --minify --sourcemap='external' ./index.ts --outdir  ./bin --outfile ./bin/pretterls.js",
-		"build:bin": "bun build --compile --minify ./index.ts --outfile bin/pretterls"
+		"build:node": "bun ./build/node.ts"
 	},
 	"dependencies": {
 		"prettier": "^3.4.2",
