@@ -1,3 +1,7 @@
+bin
+dist
+*.bun-build
+
 # Logs
 logs
 *.log

@@ -1,0 +1,24 @@
+{
+	"name": "prettier-language-server",
+	"version": "0.0.1",
+	"type": "module",
+	"module": "index.ts",
+	"bin": "./bin/prettier-language-server.js",
+	"scripts": {
+		"build:node": "bun build --target node --minify --sourcemap ./index.ts --outfile ./bin/prettier-language-server.js",
+		"build:bin": "bun build --compile --minify --sourcemap ./index.ts --outfile bin/prettier-language-server"
+	},
+	"dependencies": {
+		"prettier": "^3.4.2",
+		"vscode-languageserver": "^9.0.1",
+		"vscode-languageserver-textdocument": "^1.0.12",
+		"vscode-uri": "^3.0.8"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	}
+}
