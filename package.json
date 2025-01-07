@@ -1,12 +1,10 @@
 {
-	"name": "prettier-language-server",
+	"name": "pretterls",
 	"version": "0.0.1",
-	"type": "module",
-	"module": "index.ts",
-	"bin": "./bin/prettier-language-server.js",
+	"bin": "./bin/pretterls.js",
 	"scripts": {
-		"build:node": "bun build --target node --minify --sourcemap ./index.ts --outfile ./bin/prettier-language-server.js",
-		"build:bin": "bun build --compile --minify --sourcemap ./index.ts --outfile bin/prettier-language-server"
+		"build:node": "bun build --target node --minify --sourcemap='external' ./index.ts --outdir  ./bin --outfile ./bin/pretterls.js",
+		"build:bin": "bun build --compile --minify ./index.ts --outfile bin/pretterls"
 	},
 	"dependencies": {
 		"prettier": "^3.4.2",

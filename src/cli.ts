@@ -3,22 +3,25 @@ import { parseArgs } from 'node:util'
 import { createConnection } from './connection.js'
 
 const { values } = parseArgs({
-  args: Bun.argv,
-  options: {
-    version: {
-      type: 'boolean',
-      short: 'v',
-    },
-  },
-  strict: true,
-  allowPositionals: true,
+	options: {
+		version: {
+			type: 'boolean',
+			short: 'v',
+		},
+	},
+	strict: true,
+	allowPositionals: true,
 })
 
 if (values.version) {
-  const pkg = await import('../package.json')
-  await Bun.write(Bun.stdout, pkg.version)
+	const pkg = require('../package.json')
+	process.stdout.write(pkg.version)
 
-  process.exit(0)
+	process.exit(0)
 }
+
+setTimeout(() => {
+	process.exit(0)
+}, 1000)
 
 createConnection().listen()
