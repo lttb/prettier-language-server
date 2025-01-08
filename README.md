@@ -1,6 +1,4 @@
-# prettierls
-
-Prettier Language Server
+# prettier-language-server
 
 ## Features
 
@@ -18,7 +16,7 @@ and the set of the features is quite limited.
 ## Installation
 
 ```sh
-npm i -g prettierls
+npm i -g prettier-language-server
 ```
 
 ## Neovim Language Server Configuration
@@ -44,7 +42,7 @@ local root_file = {
 
 return {
   default_config = {
-    cmd = { 'pretterls' },
+    cmd = { 'prettier-language-server' },
     filetypes = {
       'javascript',
       'javascriptreact',
