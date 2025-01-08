@@ -8,6 +8,6 @@ await Bun.build({
 	minify: true,
 	format: 'cjs',
 	outdir: path.join(import.meta.dir, '../bin/'),
-	naming: 'pretterls',
+	naming: 'prettierls ',
 	external: Object.keys(dependencies),
 })

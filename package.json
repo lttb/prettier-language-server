@@ -1,5 +1,5 @@
 {
-	"name": "pretterls",
+	"name": "prettierls",
 	"type": "module",
 	"version": "0.0.1",
 	"engines": {
@@ -9,8 +9,8 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"files": ["bin/pretterls"],
-	"bin": "./bin/pretterls",
+	"files": ["bin/prettierls"],
+	"bin": "./bin/prettierls",
 	"scripts": {
 		"build:node": "bun ./build/node.ts"
 	},

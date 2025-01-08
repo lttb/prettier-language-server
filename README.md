@@ -44,7 +44,7 @@ local root_file = {
 
 return {
   default_config = {
-    cmd = { 'pretterls' },
+    cmd = { 'prettierls' },
     filetypes = {
       'javascript',
       'javascriptreact',
