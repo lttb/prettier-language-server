@@ -4,8 +4,12 @@ Prettier Language Server
 
 ## Features
 
-- Range Formatting
+The idea of this language server is to be as simple and fast as possible,
+and the set of the features is quite limited.
+
+- Out of the box Range Formatting
 - Doesn't provide diagnostics, only formatting
+- Resolves and caches the prettier config based on the workspace folder
 
 ## Requirements
 
@@ -70,4 +74,3 @@ return {
 ```
 
 </details>
-# prettier-language-server
