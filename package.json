@@ -1,5 +1,5 @@
 {
-	"name": "prettierls",
+	"name": "prettier-language-server",
 	"type": "module",
 	"version": "0.0.1",
 	"engines": {
@@ -9,8 +9,8 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"files": ["bin/prettierls"],
-	"bin": "./bin/prettierls",
+	"files": ["bin/prettier-language-server"],
+	"bin": "./bin/prettier-language-server",
 	"scripts": {
 		"build:node": "bun ./build/node.ts"
 	},
