@@ -37,6 +37,8 @@ export async function createConnection(): Promise<Connection> {
 	}
 
 	async function resolvePrettierConfig(searchPath: string) {
+		// TODO: maybe support default config from lsp setup
+
 		// prioritise workspace config over file-level search
 		if (workspacePrettierConfig) return workspacePrettierConfig
 

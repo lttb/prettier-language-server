@@ -2,6 +2,16 @@
 	"name": "pretterls",
 	"type": "module",
 	"version": "0.0.1",
+	"engines": {
+		"node": ">=13.2.0"
+	},
+	"engineStrict": true,
+	"publishConfig": {
+		"provenance": true
+	},
+	"files": [
+		"./bin/pretterls"
+	],
 	"bin": "./bin/pretterls",
 	"scripts": {
 		"build:node": "bun ./build/node.ts"

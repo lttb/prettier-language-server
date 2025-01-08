@@ -1,7 +1,9 @@
+// will be resolved at the build time
 import { version } from '../package.json'
 
 async function main() {
 	const { parseArgs } = await import('node:util')
+
 	const { createConnection } = await import('./connection')
 
 	const { values } = parseArgs({
