@@ -7,9 +7,9 @@
 	},
 	"engineStrict": true,
 	"publishConfig": {
-		"provenance": true
+		"access": "public"
 	},
-	"files": ["./bin/pretterls"],
+	"files": ["bin/pretterls"],
 	"bin": "./bin/pretterls",
 	"scripts": {
 		"build:node": "bun ./build/node.ts"
