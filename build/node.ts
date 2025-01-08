@@ -8,6 +8,6 @@ await Bun.build({
 	minify: true,
 	format: 'cjs',
 	outdir: path.join(import.meta.dir, '../bin/'),
-	naming: 'prettier-language-server ',
+	naming: 'prettier-language-server',
 	external: Object.keys(dependencies),
 })
