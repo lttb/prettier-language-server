@@ -88,7 +88,7 @@ return {
 
 Add the following code to initialize the language server:
 
-```sh
+```lua
 require('lspconfig').prettier_ls.setup({})
 ```
 
