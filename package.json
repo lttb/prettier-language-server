@@ -1,6 +1,6 @@
 {
 	"name": "prettier-language-server",
-	"type": "module",
+	"type": "commonjs",
 	"version": "0.0.2",
 	"engines": {
 		"node": ">=13.2.0"
