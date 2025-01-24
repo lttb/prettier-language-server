@@ -1,7 +1,7 @@
 {
 	"name": "prettier-language-server",
 	"type": "commonjs",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"engines": {
 		"node": ">=13.2.0"
 	},
@@ -9,7 +9,9 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"files": ["bin/prettier-language-server"],
+	"files": [
+		"bin/prettier-language-server"
+	],
 	"bin": "./bin/prettier-language-server",
 	"scripts": {
 		"build:node": "bun ./build/node.ts"
