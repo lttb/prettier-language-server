@@ -7,7 +7,6 @@ import type { Options as PrettierOptions } from 'prettier'
 
 export async function createConnection(): Promise<Connection> {
 	const nodePath = await import('node:path')
-	const prettier = await import('prettier')
 	const { URI } = await import('vscode-uri')
 	const { TextDocument } = await import('vscode-languageserver-textdocument')
 
@@ -24,6 +23,23 @@ export async function createConnection(): Promise<Connection> {
 
 	let workspacePrettierConfigFile: string | null
 	let workspacePrettierConfig: PrettierOptions | null
+
+	let prettier = await import('prettier')
+
+	async function loadProjectPrettier(root: string) {
+		try {
+			prettier = await import(nodePath.join(root, 'node_modules', 'prettier', 'index.mjs'))
+			connection.console.info(`Loaded project prettier from ${root}`)
+		}
+		catch (err) {
+			if (err instanceof Error && 'code' in err && err.code === 'ERR_MODULE_NOT_FOUND') {
+				// Expected error: project does not have prettier installed
+			} else {
+				connection.console.warn(`Failed to load project prettier from ${root}, falling back to global prettier: ${err}`)
+			}
+			prettier = await import('prettier')
+		}
+	}
 
 	async function setWorkspaceConfig(searchPath: string) {
 		workspacePrettierConfigFile ??= await prettier.resolveConfigFile(searchPath)
@@ -57,6 +73,7 @@ export async function createConnection(): Promise<Connection> {
 	) {
 		const filepath = URI.parse(uri).fsPath
 
+		await loadProjectPrettier(filepath)
 		const prettierConfig = await resolvePrettierConfig(filepath)
 
 		const formattedCode = await prettier.format(code, {
